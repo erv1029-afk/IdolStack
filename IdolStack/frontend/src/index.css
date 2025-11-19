@@ -159,3 +159,29 @@ p {
   background-color: #8a2be2; /* neon violet */
   color: #fff;
 }
+
+.explore-page {
+  padding: 3rem 2rem;
+}
+
+.idol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #111;
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  border-color: var(--color-hover);
+}
