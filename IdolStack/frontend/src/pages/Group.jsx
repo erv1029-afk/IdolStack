@@ -1,4 +1,5 @@
 import React from "react";
+import groupData from "../data/groupData";
 
 const Group = () => {
   return (
@@ -11,15 +12,11 @@ const Group = () => {
       </section>
 
       <section className="group-grid grid">
-        <div className="card bts">BTS</div>
-        <div className="card ateez">🏴‍☠️Ateez</div>
-        <div className="card enhypen">Enhypen</div>
-        <div className="card xikers">Xikers</div>
-        <div className="card stray-kids">Stray Kids</div>
-         <div className="card blackpink">BLACKPINK</div>
-        <div className="card xg">XG</div>
-        <div className="card ive">IVE</div>
-        <div className="card aespa">aespa</div>
+        {groupData.map(({ name, className, label }) => (
+          <div key={name} className={`card ${className}`}>
+            {label || name}
+          </div>
+        ))}
       </section>
     </main>
   );
