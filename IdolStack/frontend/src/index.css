@@ -185,3 +185,19 @@ p {
   transform: scale(1.05);
   border-color: var(--color-hover);
 }
+
+.match-high {
+  border: 2px solid limegreen;
+}
+
+.match-low {
+  border: 2px dashed crimson;
+}
+
+.match-same-type {
+  border: 2px solid gold;
+}
+
+.match-unknown {
+  opacity: 0.5;
+}
