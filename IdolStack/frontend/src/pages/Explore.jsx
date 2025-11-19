@@ -23,7 +23,7 @@ const compatibilityMap = {
 
 const Explore = () => {
   const [idols, setIdols] = useState([]);
- const { mbtiType } = useContext(MBTIContext);
+  const { mbtiType } = useContext(MBTIContext); // ✅ correct key
 
   useEffect(() => {
     async function fetchData() {
@@ -40,6 +40,11 @@ const Explore = () => {
       <section className="intro text-center">
         <h1 className="accent">Explore Idols</h1>
         <p>Browse your biases, MBTI types, and cultural vibes.</p>
+        {mbtiType && (
+          <p className="user-mbti">
+            Your MBTI Type: <strong>{mbtiType}</strong>
+          </p>
+        )}
       </section>
 
       <section className="idol-groups">
