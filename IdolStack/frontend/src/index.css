@@ -1,0 +1,116 @@
+/* 🌐 Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  background-color: #000; /* default black backdrop */
+  color: #fff;
+}
+
+/* 🎨 Color palette variables */
+:root {
+  --color-black: #000000;
+  --color-red: #e63946;
+  --color-blue: #457b9d;
+  --color-purple: #6a4c93;
+  --color-pink: #ff69b4;
+
+  --color-accent: var(--color-pink);
+  --color-hover: var(--color-purple);
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 🧭 Navigation */
+nav {
+  background-color: var(--color-black);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 2rem;
+}
+
+nav a {
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--color-hover);
+}
+
+/* 🧱 Layout */
+body {
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* 🖼️ Cards and containers */
+.card {
+  background-color: #111;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  border-color: var(--color-accent);
+}
+
+/* 🎯 Buttons */
+button {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-hover);
+}
+
+/* 🧠 Typography */
+h1, h2, h3 {
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* 🧼 Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.rounded {
+  border-radius: 999px;
+}
