@@ -38,28 +38,28 @@ const activeStyle = {
 };
 
 const NavBar = () => {
+  const paths = ["/", "/explore", "/calendar", "/phrases", "/mbti", "/groups"];
+  const labels = ["Home", "Explore", "Calendar", "Phrases", "MBTI", "Groups"];
+
   return (
     <nav style={navStyle}>
       <NavLink to="/" style={logoStyle}>
         IdolStack
       </NavLink>
       <ul style={navLinksStyle}>
-        {["/", "/explore", "/calendar", "/phrases", "/mbti"].map((path, i) => {
-          const label = ["Home", "Explore", "Calendar", "Phrases", "MBTI"][i];
-          return (
-            <li key={path}>
-              <NavLink
-                to={path}
-                end={path === "/"}
-                style={({ isActive }) =>
-                  isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-                }
-              >
-                {label}
-              </NavLink>
-            </li>
-          );
-        })}
+        {paths.map((path, i) => (
+          <li key={path}>
+            <NavLink
+              to={path}
+              end={path === "/"}
+              style={({ isActive }) =>
+                isActive ? { ...linkStyle, ...activeStyle } : linkStyle
+              }
+            >
+              {labels[i]}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
