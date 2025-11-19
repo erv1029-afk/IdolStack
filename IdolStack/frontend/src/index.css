@@ -12,6 +12,10 @@ html {
   color: #fff;
 }
 
+body {
+  line-height: 1.6;
+}
+
 /* 🎨 Color palette variables */
 :root {
   --color-black: #000000;
@@ -45,45 +49,12 @@ nav a:hover {
 }
 
 /* 🧱 Layout */
-body {
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
-}
-
 main {
   padding: 2rem;
 }
 
-/* 🖼️ Cards and containers */
-.card {
-  background-color: #111;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.02);
-  border-color: var(--color-accent);
-}
-
-/* 🎯 Buttons */
-button {
-  background-color: var(--color-accent);
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--color-hover);
+.explore-page {
+  padding: 3rem 2rem;
 }
 
 /* 🧠 Typography */
@@ -115,6 +86,24 @@ p {
   border-radius: 999px;
 }
 
+/* 🖼️ Card styles */
+.card {
+  background-color: #111;
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  border-color: var(--color-hover);
+}
+
+/* 🎨 Group-specific card themes */
 .card.bts {
   background-color: #6f42c1; /* BTS purple */
   color: #fff;
@@ -160,32 +149,7 @@ p {
   color: #fff;
 }
 
-.explore-page {
-  padding: 3rem 2rem;
-}
-
-.idol-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-}
-
-.card {
-  background-color: #111;
-  color: var(--color-accent);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-  font-weight: bold;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  border-color: var(--color-hover);
-}
-
+/* 🧩 MBTI match indicators */
 .match-high {
   border: 2px solid limegreen;
 }
@@ -200,4 +164,27 @@ p {
 
 .match-unknown {
   opacity: 0.5;
+}
+
+/* 🧑‍🎤 Idol grid */
+.idol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+/* 🎯 Buttons */
+button {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-hover);
 }
