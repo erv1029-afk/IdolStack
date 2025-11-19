@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { BiasContext } from "../context/BiasContext";
-
 //MBTI for all artists
 const mbtiProfiles = {
   // 🧠 BTS
@@ -115,9 +112,8 @@ const resultStyle = {
   boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
 };
 
-const MBTICompare = ({ userMBTI }) => {
-  const { bias } = useContext(BiasContext);
-  const idolMBTI = mbtiProfiles[bias] || "Unknown";
+const MBTICompare = ({ userMBTI, idolName }) => {
+  const idolMBTI = mbtiProfiles[idolName] || "Unknown";
 
   return (
     <section style={sectionStyle}>
@@ -126,13 +122,13 @@ const MBTICompare = ({ userMBTI }) => {
         <span style={highlightStyle}>Your MBTI:</span> {userMBTI || "Not entered"}
       </p>
       <p style={paragraphStyle}>
-        <span style={highlightStyle}>{bias || "Selected Idol"}'s MBTI:</span>{" "}
+        <span style={highlightStyle}>{idolName || "Selected Idol"}'s MBTI:</span>{" "}
         {idolMBTI}
       </p>
 
       {userMBTI === "" ? (
         <p style={paragraphStyle}>
-          Please enter your MBTI to compare with your bias.
+          Please enter your MBTI to compare with your favorite idol.
         </p>
       ) : (
         idolMBTI !== "Unknown" && (

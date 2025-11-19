@@ -8,6 +8,7 @@ import Explore from "./pages/Explore";
 import Calendar from "./pages/Calendar";
 import Phrases from "./pages/Phrases";
 import MBTI from "./pages/MBTI";
+import Group from "./pages/Group"; // ✅ NEW
 import NotFound from "./pages/NotFound";
 
 // 🧹 Scroll restoration component
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/mbti" element={<MBTI />} />
+        <Route path="/group/:name" element={<Group />} /> {/* ✅ NEW */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

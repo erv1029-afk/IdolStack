@@ -14,6 +14,8 @@ const logoStyle = {
   fontSize: "1.8rem",
   color: "#fff",
   margin: 0,
+  textDecoration: "none",
+  fontWeight: "bold",
 };
 
 const navLinksStyle = {
@@ -38,7 +40,9 @@ const activeStyle = {
 const NavBar = () => {
   return (
     <nav style={navStyle}>
-      <h1 style={logoStyle}>IdolStack</h1>
+      <NavLink to="/" style={logoStyle}>
+        IdolStack
+      </NavLink>
       <ul style={navLinksStyle}>
         {["/", "/explore", "/calendar", "/phrases", "/mbti"].map((path, i) => {
           const label = ["Home", "Explore", "Calendar", "Phrases", "MBTI"][i];
