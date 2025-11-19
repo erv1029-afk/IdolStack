@@ -114,3 +114,48 @@ p {
 .rounded {
   border-radius: 999px;
 }
+
+.card.bts {
+  background-color: #6f42c1; /* BTS purple */
+  color: #fff;
+}
+
+.card.ateez {
+  background: linear-gradient(135deg, #cc7722, #ffd700); /* burnt orange to deep gold */
+  color: #fff;
+}
+
+.card.enhypen {
+  background: linear-gradient(135deg, #8b0000, #000000); /* crimson red to black */
+  color: #fff;
+}
+
+.card.xikers {
+  background: linear-gradient(135deg, #39ff14, #adff2f); /* neon green to bright lime */
+  color: #000;
+}
+
+.card.stray-kids {
+  background-color: #000;
+  color: #fff;
+}
+
+.card.blackpink {
+  background-color: #ff69b4;
+  color: #000;
+}
+
+.card.xg {
+  background: linear-gradient(135deg, #00bfff, #c0c0c0); /* electric blue to silver */
+  color: #000;
+}
+
+.card.ive {
+  background: linear-gradient(135deg, #ffd700, #f8f8ff); /* royal gold to pearl white */
+  color: #000;
+}
+
+.card.aespa {
+  background-color: #8a2be2; /* neon violet */
+  color: #fff;
+}
