@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import { getIdols } from "../services/api";
 import { MBTIContext } from "../context/MBTIContext";
-import { getCompatibility } from "../utils/mbtiUtils";
+import { getCompatibility } from "@utils/mbtiUtils";
 
 const Explore = () => {
   const [idols, setIdols] = useState([]);
-  const { userMBTI } = useContext(MBTIContext); // e.g., "INFP"
+  const { userMBTI } = useContext(MBTIContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,3 +37,5 @@ const Explore = () => {
     </main>
   );
 };
+
+export default Explore;

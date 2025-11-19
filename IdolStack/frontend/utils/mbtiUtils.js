@@ -1,4 +1,3 @@
-// Simple compatibility tiers (can be expanded)
 const compatibilityMap = {
   INFP: ["ENFJ", "INFJ", "ENFP"],
   ENFP: ["INFJ", "INTJ", "INFP"],
