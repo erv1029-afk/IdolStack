@@ -1,6 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import { getIdols } from "../services/api";
-import { MBTIContext } from "../context/MBTIContext";
+import { useEffect, useState } from "react";
 
 const compatibilityMap = {
   INFP: ["ENFJ", "INFJ", "ENFP"],
@@ -21,16 +19,33 @@ const compatibilityMap = {
   ESTJ: ["ISTJ", "ESFJ", "ENTJ"],
 };
 
+const groupLinks = {
+  BTS: "https://www.youtube.com/@BTS",
+  ATEEZ: "https://www.youtube.com/@ATEEZofficial",
+  StrayKids: "https://www.youtube.com/@StrayKids",
+  ENHYPEN: "https://www.youtube.com/@ENHYPEN",
+  XIKERS: "https://www.youtube.com/@xikers_official",
+  BLACKPINK: "https://www.youtube.com/@BLACKPINK",
+  XG: "https://www.youtube.com/@XGOfficial",
+  IVE: "https://www.youtube.com/@IVEstarship",
+  aespa: "https://www.youtube.com/@aespa",
+};
+
 const Explore = () => {
   const [idols, setIdols] = useState([]);
-  const { mbtiType } = useContext(MBTIContext); // ✅ correct key
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await getIdols();
-      setIdols(data);
+    async function fetchIdols() {
+      try {
+        const response = await fetch("http://localhost:5000/api/idols");
+        const data = await response.json();
+        setIdols(data);
+      } catch (error) {
+        console.error("❌ Failed to fetch idols:", error);
+      }
     }
-    fetchData();
+
+    fetchIdols();
   }, []);
 
   const mbtiTypes = Object.keys(compatibilityMap);
@@ -39,12 +54,7 @@ const Explore = () => {
     <main className="explore-page">
       <section className="intro text-center">
         <h1 className="accent">Explore Idols</h1>
-        <p>Browse your biases, MBTI types, and cultural vibes.</p>
-        {mbtiType && (
-          <p className="user-mbti">
-            Your MBTI Type: <strong>{mbtiType}</strong>
-          </p>
-        )}
+        <p>Discover MBTI types and explore their music through official YouTube channels.</p>
       </section>
 
       <section className="idol-groups">
@@ -59,6 +69,17 @@ const Explore = () => {
                   <div key={idol._id} className="card">
                     <h4>{idol.name}</h4>
                     <p>MBTI: {idol.mbti}</p>
+                    <p>Group: {idol.group}</p>
+                    {groupLinks[idol.group] && (
+                      <a
+                        href={groupLinks[idol.group]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="youtube-link"
+                      >
+                        🎧 Explore {idol.group} on YouTube →
+                      </a>
+                    )}
                   </div>
                 ))}
             </div>
