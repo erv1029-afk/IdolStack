@@ -1,22 +1,70 @@
-import React from "react";
-import groupData from "../data/groupData";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
 const Group = () => {
+  const { name } = useParams();
+  const [group, setGroup] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // 🛰️ Fetch all groups and match by slug
+  useEffect(() => {
+    const fetchGroup = async () => {
+      try {
+        const res = await fetch("/api/groups");
+        const data = await res.json();
+        const matched = data.find(
+          g => g.name.toLowerCase().replace(/\s+/g, "-") === name
+        );
+        setGroup(matched);
+      } catch (err) {
+        console.error("❌ Group fetch error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGroup();
+  }, [name]);
+
+  if (loading) return <p className="text-center">Loading group...</p>;
+
+  if (!group) {
+    return (
+      <main className="group-detail text-center">
+        <h2 className="accent">Group not found</h2>
+        <p>We couldn’t find that group — maybe try another bias?</p>
+        <Link to="/groups" className="btn">Back to Groups</Link>
+      </main>
+    );
+  }
+
   return (
-    <main className="group-page">
-      <section className="intro text-center">
-        <h1 className="accent">Idol Groups</h1>
-        <p>
-          Discover iconic K-pop groups, explore their colors, styles, and stories — all in one place.
-        </p>
+    <main className="group-detail">
+      <section className="hero text-center">
+        <h1 className="accent">{group.label || group.name}</h1>
+        <p className="subtitle">Agency: {group.agency || "Unknown"}</p>
+        {/* 🖼️ Photo slot */}
+        {group.image && (
+          <img src={group.image} alt={`${group.name} group photo`} className="group-photo" />
+        )}
       </section>
 
-      <section className="group-grid grid">
-        {groupData.map(({ name, className, label }) => (
-          <div key={name} className={`card ${className}`}>
-            {label || name}
-          </div>
-        ))}
+      <section className="bio">
+        <h2>About {group.name}</h2>
+        <p>{group.description || "No description available yet."}</p>
+      </section>
+
+      <section className="members">
+        <h2>Members</h2>
+        <ul>
+          {(group.members || []).map((member, i) => (
+            <li key={i}>{member}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="back-link text-center">
+        <Link to="/groups" className="btn">← Back to All Groups</Link>
       </section>
     </main>
   );
