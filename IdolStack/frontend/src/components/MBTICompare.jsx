@@ -1,145 +1,43 @@
-//MBTI for all artists
-const mbtiProfiles = {
-  // 🧠 BTS
-  RM: "ENFP",
-  Jin: "INTP",
-  SUGA: "ISTP",
-  JHope: "INFJ",
-  Jimin: "ENFJ",
-  V: "INFP",
-  Jungkook: "ISFP",
+import mbtiData from "../data/mbtiData";
 
-  // 🌊 ATEEZ
-  Hongjoong: "INFP",
-  Seonghwa: "ENFJ",
-  Yunho: "ENFJ",
-  Yeosang: "ISFJ",
-  San: "INFP",
-  Mingi: "ENTP",
-  Wooyoung: "ESFJ",
-  Jongho: "ESFJ",
+const MBTICompare = ({ userMBTI, compatibilityMap }) => {
+  if (!userMBTI || userMBTI.length !== 4) return null;
 
-  // 🔥 Stray Kids
-  BangChan: "ENFJ",
-  LeeKnow: "ISFP",
-  Changbin: "ENFP",
-  Hyunjin: "INFP",
-  Han: "ISTP",
-  Felix: "ESFJ",
-  Seungmin: "ESFJ",
-  IN: "ISFJ",
+  const matchingIdols = mbtiData.filter(
+    (idol) => idol.mbtiType.toUpperCase() === userMBTI
+  );
 
-  // 🌟 ENHYPEN
-  Heeseung: "INTP",
-  Jay: "ENFJ",
-  Jake: "ESTJ",
-  Sunghoon: "ISTJ",
-  Sunoo: "ENFP",
-  Jungwon: "ISTJ",
-  Niki: "ESFP",
-
-  // 🚀 xikers
-  Minjae: "INFP",
-  Junmin: "ISTJ",
-  Sumin: "INTJ",
-  Jinsik: "INFP",
-  Hyunwoo: "INFP",
-  Junghoon: "INTP",
-  Seeun: "ESTJ",
-  Yujun: "ISFP",
-  Hunter: "ISTJ",
-  Yechan: "ENTP",
-
-  // 💎 BLACKPINK
-  Jisoo: "ISTP",
-  Jennie: "INFP",
-  Rosé: "ENFP",
-  Lisa: "ISFP",
-
-  // ✨ XG
-  Chisa: "ENFP",
-  Hinata: "ISFP",
-  Jurin: "ENTJ",
-  Harvey: "INFP",
-  Juria: "ESFJ",
-  Maya: "ESFP",
-  Cocona: "INFJ",
-
-  // 🌸 IVE
-  AnYujin: "ISTP",
-  Gaeul: "ISTJ",
-  Rei: "INFJ",
-  Wonyoung: "ENFP",
-  Liz: "INFP",
-  Leeseo: "ENFP",
-
-  // 🌐 aespa
-  Karina: "ENFP",
-  Giselle: "INFJ",
-  Winter: "ISFJ",
-  Ningning: "INFP",
-};
-
-const sectionStyle = {
-  backgroundColor: "#fef6e4",
-  padding: "2rem",
-  fontFamily: "Inter, sans-serif",
-  minHeight: "100vh",
-  color: "#333",
-};
-
-const headingStyle = {
-  fontSize: "2rem",
-  marginBottom: "1rem",
-};
-
-const paragraphStyle = {
-  fontSize: "1.1rem",
-  marginBottom: "0.8rem",
-};
-
-const highlightStyle = {
-  fontWeight: "bold",
-  color: "#ff4d6d",
-};
-
-const resultStyle = {
-  marginTop: "1.5rem",
-  fontSize: "1.2rem",
-  backgroundColor: "#fff",
-  padding: "1rem",
-  borderRadius: "8px",
-  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-};
-
-const MBTICompare = ({ userMBTI, idolName }) => {
-  const idolMBTI = mbtiProfiles[idolName] || "Unknown";
+  const compatibleTypes = compatibilityMap[userMBTI] || [];
+  const compatibleIdols = mbtiData.filter(
+    (idol) => compatibleTypes.includes(idol.mbtiType.toUpperCase())
+  );
 
   return (
-    <section style={sectionStyle}>
-      <h2 style={headingStyle}>🧠 MBTI Comparison</h2>
-      <p style={paragraphStyle}>
-        <span style={highlightStyle}>Your MBTI:</span> {userMBTI || "Not entered"}
-      </p>
-      <p style={paragraphStyle}>
-        <span style={highlightStyle}>{idolName || "Selected Idol"}'s MBTI:</span>{" "}
-        {idolMBTI}
-      </p>
-
-      {userMBTI === "" ? (
-        <p style={paragraphStyle}>
-          Please enter your MBTI to compare with your favorite idol.
-        </p>
+    <section style={{ marginTop: "2rem" }}>
+      <h2 className="accent">You're like...</h2>
+      {matchingIdols.length > 0 ? (
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {matchingIdols.map((idol) => (
+            <li key={idol.name}>
+              <strong>{idol.name}</strong> from <em>{idol.group}</em>
+            </li>
+          ))}
+        </ul>
       ) : (
-        idolMBTI !== "Unknown" && (
-          <div style={resultStyle}>
-            {userMBTI === idolMBTI ? (
-              <p>🎉 You share the same MBTI type!</p>
-            ) : (
-              <p>🔍 Explore how your personalities complement each other.</p>
-            )}
-          </div>
-        )
+        <p>No idols share your MBTI type.</p>
+      )}
+
+      <h2 className="accent" style={{ marginTop: "2rem" }}>You're most compatible with...</h2>
+      {compatibleIdols.length > 0 ? (
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {compatibleIdols.map((idol) => (
+            <li key={idol.name}>
+              <strong>{idol.name}</strong> (<em>{idol.mbtiType}</em>) from <em>{idol.group}</em>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No compatible idols found.</p>
       )}
     </section>
   );

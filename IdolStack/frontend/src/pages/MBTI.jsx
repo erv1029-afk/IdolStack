@@ -64,7 +64,8 @@ const MBTI = () => {
         maxLength={4}
       />
 
-      <MBTICompare userMBTI={userMBTI} />
+      {/* ✅ Pass compatibilityMap to MBTICompare */}
+      <MBTICompare userMBTI={userMBTI} compatibilityMap={compatibilityMap} />
 
       <section className="compatibility-chart" style={{ marginTop: "3rem", textAlign: "left", maxWidth: "600px", marginInline: "auto" }}>
         <h2 className="accent">MBTI Compatibility Guide</h2>
