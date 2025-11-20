@@ -1,42 +1,77 @@
-import { useEffect, useState } from "react";
-import { getIdols } from "../services/api";
+import { useState } from "react";
 
-const listStyle = {
-  listStyle: "none",
-  padding: 0,
-  margin: "2rem 0",
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-  gap: "1.5rem",
-};
-
-const itemStyle = {
+const cardStyle = {
   backgroundColor: "#fff",
-  padding: "1rem",
-  borderRadius: "8px",
-  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+  borderRadius: "12px",
+  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+  overflow: "hidden",
+  width: "100%",
+  maxWidth: "250px",
   fontFamily: "Inter, sans-serif",
-  fontSize: "1rem",
-  color: "#333",
-  textAlign: "center",
+  transition: "transform 0.3s ease",
 };
 
-const IdolList = () => {
-  const [idols, setIdols] = useState([]);
+const imageStyle = {
+  width: "100%",
+  height: "280px",
+  objectFit: "cover",
+};
 
-  useEffect(() => {
-    getIdols().then(setIdols);
-  }, []);
+const infoStyle = {
+  padding: "1rem",
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.5rem",
+};
+
+const nameStyle = {
+  fontSize: "1.4rem",
+  margin: 0,
+  color: "#333",
+};
+
+const groupStyle = {
+  fontSize: "1rem",
+  margin: 0,
+  color: "#666",
+};
+
+const positionStyle = {
+  alignSelf: "flex-start",
+  backgroundColor: "#FF69B4", // 💖 Hot pink for flair!
+  color: "#fff",
+  padding: "0.3rem 0.6rem",
+  borderRadius: "6px",
+  fontSize: "0.9rem",
+};
+
+const factStyle = {
+  fontSize: "0.85rem",
+  color: "#666",
+};
+
+const hoverStyle = {
+  transform: "scale(1.03)",
+};
+
+const ArtistCard = ({ name, group, position, image, fact }) => {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <ul style={listStyle}>
-      {idols.map((idol) => (
-        <li key={idol._id} style={itemStyle}>
-          {idol.name}
-        </li>
-      ))}
-    </ul>
+    <div
+      style={{ ...cardStyle, ...(isHovered ? hoverStyle : {}) }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <img src={image} alt={`${name} from ${group}`} style={imageStyle} />
+      <div style={infoStyle}>
+        <h2 style={nameStyle}>{name}</h2>
+        <p style={groupStyle}>{group}</p>
+        <span style={positionStyle}>{position || "Position Unknown"}</span>
+        <p style={factStyle}>{fact}</p>
+      </div>
+    </div>
   );
 };
 
-export default IdolList;
+export default ArtistCard;

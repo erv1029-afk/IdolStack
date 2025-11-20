@@ -15,23 +15,30 @@ const groupLinks = {
 
 const Explore = () => {
   const [idols, setIdols] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function fetchIdols() {
       try {
-        const response = await fetch("http://localhost:5000/api/idols");
+        const response = await fetch("http://localhost:5000/api/artists");
+        if (!response.ok) throw new Error("Server returned an error");
         const data = await response.json();
-        setIdols(data);
-      } catch (error) {
-        console.error("❌ Failed to fetch idols:", error);
+        setIdols(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("❌ Failed to fetch idols:", err);
+        setError("Failed to load idol data.");
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchIdols();
   }, []);
 
-  // Extract unique groups from idol data
-  const groups = [...new Set(idols.map((idol) => idol.group))];
+  const groups = Array.isArray(idols)
+    ? [...new Set(idols.map((idol) => idol.group))]
+    : [];
 
   return (
     <main className="explore-page">
@@ -42,32 +49,37 @@ const Explore = () => {
         </p>
       </section>
 
-      <section className="idol-groups">
-        <h2>Idols by Group</h2>
-        {groups.map((group) => (
-          <div key={group} className="group-section">
-            <h3>{group}</h3>
-            <div className="idol-grid">
-              {idols
-                .filter((idol) => idol.group === group)
-                .map((idol) => (
-                  <div key={idol._id} className="card">
-                    <h4>{idol.name}</h4>
-                    <p>MBTI: {idol.mbti}</p>
-                    <a
-                      href={groupLinks[group] || `https://www.youtube.com/results?search_query=${group}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="youtube-link"
-                    >
-                      🎧 Explore {group} on YouTube →
-                    </a>
-                  </div>
-                ))}
+      {loading && <p className="text-center">Loading idols...</p>}
+      {error && <p className="text-center error">{error}</p>}
+
+      {!loading && !error && (
+        <section className="idol-groups">
+          <h2>Idols by Group</h2>
+          {groups.map((group) => (
+            <div key={group} className="group-section">
+              <h3>{group}</h3>
+              <div className="idol-grid">
+                {idols
+                  .filter((idol) => idol.group === group)
+                  .map((idol) => (
+                    <div key={idol._id || `${idol.name}-${group}`} className="card">
+                      <h4>{idol.name}</h4>
+                      <p>MBTI: {idol.mbti || "Unknown"}</p>
+                      <a
+                        href={groupLinks[group] || `https://www.youtube.com/results?search_query=${group}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="youtube-link"
+                      >
+                        🎧 Explore {group} on YouTube →
+                      </a>
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      )}
     </main>
   );
 };
