@@ -1,37 +1,38 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const { connectDB } = require('./config/db');
-
-// Routes
-const artistRoutes = require('./routes/artistRoutes');
-const groupRoutes = require('./routes/groupRoutes');
-const phraseRoutes = require('./routes/phraseRoutes');
-const comebackRoutes = require('./routes/comebackRoutes');
-
-// Middleware
-const notFound = require('./middleware/notFound');
-const errorHandler = require('./middleware/errorHandler');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-connectDB();
-
-// Middleware
+// 🧠 Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public")); // 🖼️ Serve images from /public/images
 
-// API Routes
-app.use('/api/artists', artistRoutes);
-app.use('/api/groups', groupRoutes);
-app.use('/api/phrases', phraseRoutes);
-app.use('/api/comebacks', comebackRoutes);
+// 🔌 MongoDB connection
+const { connectDB } = require("./config/db");
+connectDB();
 
-// 404 and Error Handling
+// 📡 Routes
+const artistRoutes = require("./routes/artistRoutes");
+const groupRoutes = require("./routes/groupRoutes");
+const phraseRoutes = require("./routes/phraseRoutes");
+const comebackRoutes = require("./routes/comebackRoutes");
+
+app.use("/api/artists", artistRoutes);
+app.use("/api/groups", groupRoutes);       // ✅ Supports JSON + slug
+app.use("/api/phrases", phraseRoutes);
+app.use("/api/comebacks", comebackRoutes);
+
+// 🩹 Error handling
+const notFound = require("./middleware/notFound");
+const errorHandler = require("./middleware/errorHandler");
+
 app.use(notFound);
 app.use(errorHandler);
 
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// 🚀 Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+});

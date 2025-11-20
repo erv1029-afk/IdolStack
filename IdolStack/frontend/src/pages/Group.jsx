@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+// 🧼 Utility: Convert group name to slug
+const toSlug = (name = "") =>
+  name.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+
 const Group = () => {
   const { name } = useParams();
   const [group, setGroup] = useState(null);
@@ -10,11 +14,9 @@ const Group = () => {
   useEffect(() => {
     const fetchGroup = async () => {
       try {
-        const res = await fetch("/api/groups");
+        const res = await fetch("http://localhost:5000/api/groups");
         const data = await res.json();
-        const matched = data.find(
-          g => g.name.toLowerCase().replace(/\s+/g, "-") === name
-        );
+        const matched = data.find(g => toSlug(g.name) === name);
         setGroup(matched);
       } catch (err) {
         console.error("❌ Group fetch error:", err);
@@ -38,14 +40,25 @@ const Group = () => {
     );
   }
 
+  const imageUrl = `http://localhost:5000${group.image}`;
+
   return (
     <main className="group-detail">
       <section className="hero text-center">
         <h1 className="accent">{group.label || group.name}</h1>
         <p className="subtitle">Agency: {group.agency || "Unknown"}</p>
-        {/* 🖼️ Photo slot */}
+
+        {/* 🖼️ Group photo */}
         {group.image && (
-          <img src={group.image} alt={`${group.name} group photo`} className="group-photo" />
+          <img
+            src={imageUrl}
+            alt={`${group.name} group photo`}
+            className="group-photo"
+            onError={(e) => {
+              console.warn(`❌ Could not load image: ${imageUrl}`);
+              e.target.src = "/fallback.jpg"; // Optional fallback
+            }}
+          />
         )}
       </section>
 

@@ -1,6 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// 🧼 Utility: Create a URL-safe slug from group name
+const toSlug = (name = "") =>
+  name.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+
+// 🌟 Group card component
+const GroupCard = ({ name, label, className, image }) => {
+  if (!name) return null;
+  const slug = toSlug(name);
+  const displayName = label || name;
+  const imageUrl = `http://localhost:5000${image}`;
+
+  return (
+    <Link
+      to={`/group/${slug}`}
+      className={`card ${className || ""}`}
+      aria-label={`View details for ${displayName}`}
+    >
+      <img
+        src={imageUrl}
+        alt={`${displayName} group photo`}
+        className="group-image"
+        onError={(e) => {
+          e.target.src = "/fallback.jpg"; // Optional fallback image
+        }}
+      />
+      <span className="group-label">{displayName}</span>
+    </Link>
+  );
+};
+
 const GroupList = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +40,7 @@ const GroupList = () => {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const res = await fetch("/api/groups");
+        const res = await fetch("http://localhost:5000/api/groups");
         if (!res.ok) throw new Error("Failed to fetch groups");
         const data = await res.json();
         setGroups(data);
@@ -25,12 +55,9 @@ const GroupList = () => {
     fetchGroups();
   }, []);
 
-  // 🧼 Utility: Create a URL-safe slug from group name
-  const toSlug = (name = "") =>
-    name.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
-
   return (
     <main className="group-page">
+      {/* 🧭 Intro section */}
       <section className="intro text-center">
         <h1 className="accent">Idol Groups</h1>
         <p>
@@ -45,23 +72,17 @@ const GroupList = () => {
       {error && <p className="text-center error">{error}</p>}
 
       {/* 🎤 Group grid */}
-      {!loading && !error && (
+      {!loading && !error && groups.length > 0 && (
         <section className="group-grid grid">
-          {groups.map(({ id, name, className, label }) => {
-            if (!name) return null; // 🚫 Skip if name is missing
-            const slug = toSlug(name);
-            return (
-              <Link
-                key={id || name}
-                to={`/group/${slug}`}
-                className={`card ${className || ""}`}
-                aria-label={`View details for ${label || name}`}
-              >
-                {label || name}
-              </Link>
-            );
-          })}
+          {groups.map((group) => (
+            <GroupCard key={group._id || group.name} {...group} />
+          ))}
         </section>
+      )}
+
+      {/* 🪹 Empty state */}
+      {!loading && !error && groups.length === 0 && (
+        <p className="text-center">No groups available at the moment.</p>
       )}
     </main>
   );
