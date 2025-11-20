@@ -47,6 +47,13 @@ const Group = () => {
       <section className="hero text-center">
         <h1 className="accent">{group.label || group.name}</h1>
         <p className="subtitle">Agency: {group.agency || "Unknown"}</p>
+        <p><strong>Debut:</strong> {group.debut || `Year ${group.debutYear}`}</p>
+        {group.fandom && (
+          <p><strong>Fandom:</strong> {group.fandom}</p>
+        )}
+        {group.fandomLaunch && (
+          <p><strong>Fandom Launch:</strong> {group.fandomLaunch}</p>
+        )}
 
         {/* 🖼️ Group photo */}
         {group.image && (
@@ -56,7 +63,7 @@ const Group = () => {
             className="group-photo"
             onError={(e) => {
               console.warn(`❌ Could not load image: ${imageUrl}`);
-              e.target.src = "/fallback.jpg"; // Optional fallback
+              e.target.src = "/fallback.jpg";
             }}
           />
         )}
@@ -75,6 +82,28 @@ const Group = () => {
           ))}
         </ul>
       </section>
+
+      {group.albums?.length > 0 && (
+        <section className="albums">
+          <h2>Albums</h2>
+          <ul>
+            {group.albums.map((album, i) => (
+              <li key={i}>{album}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {group.awards?.length > 0 && (
+        <section className="awards">
+          <h2>Awards</h2>
+          <ul>
+            {group.awards.map((award, i) => (
+              <li key={i}>{award}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="back-link text-center">
         <Link to="/groups" className="btn">← Back to All Groups</Link>

@@ -11,23 +11,22 @@ const {
   deleteGroup,
 } = require("../controllers/groupController");
 
-// 📥 GET all groups
+// 📦 GET all groups
 router.get("/", getAllGroups);
 
-// 🔗 GET one group by slug (for frontend routing like /group/bts)
+// 🔗 GET one group by slug (e.g. /groups/slug/bts)
 router.get("/slug/:slug", getGroupBySlug);
 
-// 🔍 GET one group by ID
+// 🔍 GET one group by MongoDB ID
 router.get("/id/:id", getGroupById);
 
-
-// 🆕 POST new group
+// 🆕 Create a new group
 router.post("/", createGroup);
 
-// ✏️ PUT update group by ID
+// ✏️ Update group by ID
 router.put("/:id", updateGroup);
 
-// 🗑️ DELETE group by ID
+// 🗑️ Delete group by ID
 router.delete("/:id", deleteGroup);
 
 module.exports = router;
