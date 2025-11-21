@@ -3,11 +3,15 @@ import React, { useState } from "react";
 const facts = [
   "Felix has freckles and a deep voice.",
   "Jisoo calms others before herself.",
-  "Yechan holds a black belt in taekwondo.",
+  "Yechan holds a black belt in Taekwondo.",
   "Karina was discovered via Instagram DMs.",
   "Hongjoong customizes his own clothes.",
   "Jennie speaks fluent English, Korean, and some Japanese.",
-  "Hunter won medals in golf competitions before becoming an idol.",
+  "Lisa learned K-pop choreography just by watching it once.",
+  "Wonyoung debuted at 14 and was the #1 finalist on Produce 48.",
+  "Jurin is a former pro snowboarder and calls herself a 'wolf'.",
+  "Hinata loves anime and drawing.",
+  "Ningning has a powerful voice despite her quiet personality.",
 ];
 
 const buttonStyle = {

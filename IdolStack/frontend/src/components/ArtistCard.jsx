@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+// 📸 Photocard styling
 const cardStyle = {
   backgroundColor: "#fff8f0",
   borderRadius: "10px",
   boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
   overflow: "hidden",
-  width: "160px", // 📏 photocard width
+  width: "160px",
   fontFamily: "Inter, sans-serif",
   transition: "transform 0.3s ease",
   textDecoration: "none",
@@ -15,8 +16,15 @@ const cardStyle = {
 
 const imageStyle = {
   width: "100%",
-  height: "220px", // 📸 photocard height
+  height: "220px",
   objectFit: "cover",
+};
+
+const infoStyle = {
+  padding: "0.8rem",
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.4rem",
 };
 
 const nameStyle = {
@@ -50,20 +58,18 @@ const hoverStyle = {
   transform: "scale(1.03)",
 };
 
-const ArtistCard = ({ name, group, position, fact }) => {
+const ArtistCard = ({ name, group, position, image, fact }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Slug for routing
-  const slug = name.toLowerCase().replace(/\s+/g, "-");
-
-  // Capitalized filename for image
-  const imageFile = `${name.replace(/\s+/g, "")}.jpg`; // e.g., "Jisoo.jpg"
-  const imagePath = `/images/${imageFile}`;
-
   const handleImageError = (e) => {
-    console.warn(`❌ Could not load image: ${imagePath}`);
-    e.target.src = "/fallback.jpg";
+    const fallbackPath = "/fallback.jpg";
+    if (!e.target.src.includes(fallbackPath)) {
+      console.warn(`❌ Could not load image: ${image}`);
+      e.target.src = fallbackPath;
+    }
   };
+
+  const slug = name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <Link
@@ -74,7 +80,7 @@ const ArtistCard = ({ name, group, position, fact }) => {
       aria-label={`View profile for ${name}`}
     >
       <img
-        src={imagePath}
+        src={image}
         alt={`${name} from ${group}`}
         style={imageStyle}
         onError={handleImageError}

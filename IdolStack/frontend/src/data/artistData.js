@@ -1,6 +1,3 @@
-import ArtistCard from "../components/ArtistCard";
-
-
 const artistData = [
   //BTS
 { name: "RM", group: "BTS", position: "Leader, Main Rapper", image: "/images/RM.jpg", fact: "RM has an IQ of 148 and taught himself English by watching Friends." },
@@ -41,9 +38,9 @@ const artistData = [
 { name: "Ni-ki", group: "ENHYPEN", position: "Main Dancer, Maknae", image: "/images/Ni-ki.jpg", fact: "Ni-ki was a backup dancer for SHINee at age 11." },
 
 // 🌀 xikers
-{ name: "Minjae", group: "xikers", position: "Vocalist", image: "/images/Minjae.jpg", fact: "Minjae loves drawing and sketching in his free time." },
+{ name: "Minjae", group: "xikers", position: "Leader, Vocalist", image: "/images/Minjae.jpg", fact: "Minjae loves drawing and sketching in his free time." },
 { name: "Junmin", group: "xikers", position: "Dancer, Vocalist", image: "/images/Junmin.jpg", fact: "Junmin is known for his calm and gentle personality." },
-{ name: "Sumin", group: "xikers", position: "Leader, Main Dancer", image: "/images/Sumin.jpg", fact: "Sumin is the leader and main dancer of xikers." },
+{ name: "Sumin", group: "xikers", position: "Rapper, Main Dancer", image: "/images/Sumin.jpg", fact: "Sumin is a rapper and main dancer of xikers." },
 { name: "Jinsik", group: "xikers", position: "Vocalist, Lyricist", image: "/images/Jinsik.jpg", fact: "Jinsik enjoys writing lyrics and journaling." },
 { name: "Hyunwoo", group: "xikers", position: "Main Vocalist", image: "/images/Hyunwoo.jpg", fact: "Hyunwoo is known for his emotional vocal tone." },
 { name: "Junghoon", group: "xikers", position: "Rapper", image: "/images/Junghoon.jpg", fact: "Junghoon is a fan of sci-fi and fantasy novels." },
