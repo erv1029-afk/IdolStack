@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 const cardStyle = {
   backgroundColor: "#fff8f0",
-  borderRadius: "12px",
-  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+  borderRadius: "10px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
   overflow: "hidden",
-  width: "100%",
-  maxWidth: "250px",
+  width: "160px", // 📏 photocard width
   fontFamily: "Inter, sans-serif",
   transition: "transform 0.3s ease",
   textDecoration: "none",
@@ -16,25 +15,18 @@ const cardStyle = {
 
 const imageStyle = {
   width: "100%",
-  height: "280px",
+  height: "220px", // 📸 photocard height
   objectFit: "cover",
 };
 
-const infoStyle = {
-  padding: "1rem",
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.5rem",
-};
-
 const nameStyle = {
-  fontSize: "1.4rem",
+  fontSize: "1.1rem",
   margin: 0,
   color: "#222",
 };
 
 const groupStyle = {
-  fontSize: "1rem",
+  fontSize: "0.9rem",
   margin: 0,
   color: "#555",
 };
@@ -43,14 +35,14 @@ const positionStyle = {
   alignSelf: "flex-start",
   backgroundColor: "#FF6B00",
   color: "#fff",
-  padding: "0.3rem 0.6rem",
-  borderRadius: "6px",
-  fontSize: "0.9rem",
+  padding: "0.2rem 0.5rem",
+  borderRadius: "5px",
+  fontSize: "0.75rem",
   fontWeight: "500",
 };
 
 const factStyle = {
-  fontSize: "0.85rem",
+  fontSize: "0.75rem",
   color: "#444",
 };
 

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard"; // adjust path if needed
+import FloatingStars from "../components/FloatingStars"; // 🌌 drifting stars
+import SurpriseMe from "../components/SurpriseMe";       // 🎁 surprise button
 
 // 🎧 YouTube links by group
 const groupLinks = {
@@ -42,34 +44,61 @@ const Explore = () => {
     : [];
 
   return (
-    <main className="explore-page">
-      <section className="intro text-center">
+    <main
+      className="explore-page"
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #A1C4FD, #C2E9FB)", // 🌈 chill gradient
+        overflow: "hidden",
+        color: "#fff",
+      }}
+    >
+      {/* 🌌 Floating stars drifting */}
+      <FloatingStars />
+
+      <section className="intro text-center" style={{ padding: "2rem" }}>
         <h1 className="accent">Explore Idols</h1>
         <p>
           Discover K-pop groups and explore their music through official YouTube channels.
         </p>
       </section>
 
+      {/* 🎁 Surprise Me button */}
+      <SurpriseMe />
+
       {loading && <p className="text-center">Loading idols...</p>}
       {error && <p className="text-center error">{error}</p>}
 
       {!loading && !error && (
-        <section className="idol-groups">
+        <section className="idol-groups" style={{ padding: "2rem" }}>
           <h2>Idols by Group</h2>
           {groups.map((group) => (
-            <div key={group} className="group-section">
+            <div key={group} className="group-section" style={{ marginBottom: "2rem" }}>
               <h3>
                 {group}{" "}
                 <a
-                  href={groupLinks[group] || `https://www.youtube.com/results?search_query=${group}`}
+                  href={
+                    groupLinks[group] ||
+                    `https://www.youtube.com/results?search_query=${group}`
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="youtube-link"
+                  style={{ marginLeft: "0.5rem", textDecoration: "none", color: "#FFD700" }}
                 >
                   🎧
                 </a>
               </h3>
-              <div className="card-grid">
+              <div
+                className="card-grid"
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "1rem",
+                  justifyContent: "center",
+                }}
+              >
                 {idols
                   .filter((idol) => idol.group === group)
                   .map((idol) => (
