@@ -2,7 +2,7 @@ import ArtistCard from "../components/ArtistCard";
 
 
 const artistData = [
-  //BTSgit add
+  //BTS
 { name: "RM", group: "BTS", position: "Leader, Main Rapper", image: "/images/RM.jpg", fact: "RM has an IQ of 148 and taught himself English by watching Friends." },
 { name: "Jin", group: "BTS", position: "Sub Vocalist, Visual", image: "/images/Jin.jpg", fact: "Jin owns a restaurant called Ossu Seiromushi in Seoul." },
 { name: "Suga", group: "BTS", position: "Lead Rapper", image: "/images/Suga.jpg", fact: "Suga started producing music at age 13." },
@@ -54,33 +54,33 @@ const artistData = [
 
 
   // 🖤 BLACKPINK
-  { name: "Jennie", group: "BLACKPINK", position: "Main Rapper, Lead Vocalist", image: "/assets/idols/jennie.jpg", fact: "Jennie speaks fluent English, Korean, and some Japanese." },
-  { name: "Jisoo", group: "BLACKPINK", position: "Lead Vocalist, Visual", image: "/assets/idols/jisoo.jpg", fact: "Jisoo made her acting debut in Snowdrop and is known for calming others before herself." },
-  { name: "Rosé", group: "BLACKPINK", position: "Main Vocalist, Lead Dancer", image: "/assets/idols/rose.jpg", fact: "Rosé writes her own lyrics and plays guitar and piano — she’s a true musical adventurer." },
-  { name: "Lisa", group: "BLACKPINK", position: "Main Dancer, Lead Rapper, Sub Vocalist, Maknae", image: "/assets/idols/lisa.jpg", fact: "Lisa is from Thailand and learned K-pop choreography just by watching it once." },
+ { name: "Jennie", group: "BLACKPINK", position: "Main Rapper, Lead Vocalist", image: "/images/Jennie.jpg", fact: "Jennie speaks fluent English, Korean, and some Japanese." },
+{ name: "Jisoo", group: "BLACKPINK", position: "Lead Vocalist, Visual", image: "/images/Jisoo.jpg", fact: "Jisoo made her acting debut in Snowdrop and is known for calming others before herself." },
+{ name: "Rosé", group: "BLACKPINK", position: "Main Vocalist, Lead Dancer", image: "/images/Rose.jpg", fact: "Rosé writes her own lyrics and plays guitar and piano — she’s a true musical adventurer." },
+{ name: "Lisa", group: "BLACKPINK", position: "Main Dancer, Lead Rapper, Sub Vocalist, Maknae", image: "/images/Lisa.jpg", fact: "Lisa is from Thailand and learned K-pop choreography just by watching it once." },
 
   // ✨ XG
-  { name: "Chisa", group: "XG", position: "Main Vocalist, Sub Leader", image: "/assets/idols/chisa.jpg", fact: "Chisa is the group’s sub-leader and once worked as an actress in Japan." },
-  { name: "Hinata", group: "XG", position: "Sub Vocalist", image: "/assets/idols/hinata.jpg", fact: "Hinata is half-Korean and half-Japanese and loves anime and drawing." },
-  { name: "Jurin", group: "XG", position: "Leader, Main Rapper", image: "/assets/idols/jurin.jpg", fact: "Jurin is a former pro snowboarder and fashion model — and calls herself a 'wolf'." },
-  { name: "Harvey", group: "XG", position: "Lead Rapper, Sub Vocalist", image: "/assets/idols/harvey.jpg", fact: "Harvey modeled for VOGUE GIRL and believes in UFOs and unicorns." },
-  { name: "Juria", group: "XG", position: "Lead Vocalist", image: "/assets/idols/juria.jpg", fact: "Juria trained for 5 years and is known for her perfectionism and vocal tone." },
-  { name: "Maya", group: "XG", position: "Main Dancer, Sub Vocalist", image: "/assets/idols/maya.jpg", fact: "Maya is the group’s energy booster and loves dancing and colorful fashion." },
-  { name: "Cocona", group: "XG", position: "Main Rapper, Maknae", image: "/assets/idols/cocona.jpg", fact: "Cocona is the youngest and trained for 5 years before debuting with XG." },
+ { name: "Chisa", group: "XG", position: "Main Vocalist, Sub Leader", image: "/images/Chisa.jpg", fact: "Chisa is the group’s sub-leader and once worked as an actress in Japan." },
+{ name: "Hinata", group: "XG", position: "Sub Vocalist", image: "/images/Hinata.jpg", fact: "Hinata is half-Korean and half-Japanese and loves anime and drawing." },
+{ name: "Jurin", group: "XG", position: "Leader, Main Rapper", image: "/images/Jurin.jpg", fact: "Jurin is a former pro snowboarder and fashion model — and calls herself a 'wolf'." },
+{ name: "Harvey", group: "XG", position: "Lead Rapper, Sub Vocalist", image: "/images/Harvey.jpg", fact: "Harvey modeled for VOGUE GIRL and believes in UFOs and unicorns." },
+{ name: "Juria", group: "XG", position: "Lead Vocalist", image: "/images/Juria.jpg", fact: "Juria trained for 5 years and is known for her perfectionism and vocal tone." },
+{ name: "Maya", group: "XG", position: "Main Dancer, Sub Vocalist", image: "/images/Maya.jpg", fact: "Maya is the group’s energy booster and loves dancing and colorful fashion." },
+{ name: "Cocona", group: "XG", position: "Main Rapper, Maknae", image: "/images/Cocona.jpg", fact: "Cocona is the youngest and trained for 5 years before debuting with XG." },
 
   // 🌸 IVE
-  { name: "Yujin", group: "IVE", position: "Leader, Lead Vocalist", image: "/assets/idols/yujin.jpg", fact: "Yujin was in IZ*ONE and appeared on King of Mask Singer before debuting with IVE." },
-  { name: "Gaeul", group: "IVE", position: "Main Dancer, Rapper", image: "/assets/idols/gaeul.jpg", fact: "Gaeul loves horror movies and mystery novels — she’s IVE’s curious eldest." },
-  { name: "Rei", group: "IVE", position: "Main Rapper, Sub Vocalist", image: "/assets/idols/rei.jpg", fact: "Rei is from Japan and loves drawing and crafting in her free time." },
-  { name: "Wonyoung", group: "IVE", position: "Lead Vocalist, Visual, Center", image: "/assets/idols/wonyoung.jpg", fact: "Wonyoung debuted at 14 and was the #1 finalist on Produce 48." },
-  { name: "Liz", group: "IVE", position: "Main Vocalist", image: "/assets/idols/liz.jpg", fact: "Liz adores cats and is known for her angelic vocals and shy charm." },
-  { name: "Leeseo", group: "IVE", position: "Sub Vocalist, Maknae", image: "/assets/idols/leeseo.jpg", fact: "Leeseo debuted at 14 and is known for her boundless energy and bright spirit." },
+  { name: "Yujin", group: "IVE", position: "Leader, Lead Vocalist", image: "/images/Yujin.jpg", fact: "Yujin was in IZ*ONE and appeared on King of Mask Singer before debuting with IVE." },
+{ name: "Gaeul", group: "IVE", position: "Main Dancer, Rapper", image: "/images/Gaeul.jpg", fact: "Gaeul loves horror movies and mystery novels — she’s IVE’s curious eldest." },
+{ name: "Rei", group: "IVE", position: "Main Rapper, Sub Vocalist", image: "/images/Rei.jpg", fact: "Rei is from Japan and loves drawing and crafting in her free time." },
+{ name: "Wonyoung", group: "IVE", position: "Lead Vocalist, Visual, Center", image: "/images/Wonyoung.jpg", fact: "Wonyoung debuted at 14 and was the #1 finalist on Produce 48." },
+{ name: "Liz", group: "IVE", position: "Main Vocalist", image: "/images/Liz.jpg", fact: "Liz adores cats and is known for her angelic vocals and shy charm." },
+{ name: "Leeseo", group: "IVE", position: "Sub Vocalist, Maknae", image: "/images/Leeseo.jpg", fact: "Leeseo debuted at 14 and is known for her boundless energy and bright spirit." },
 
   // 🌐 aespa
-  { name: "Karina", group: "aespa", position: "Leader, Main Dancer, Lead Rapper, Sub Vocalist", image: "/assets/idols/karina.jpg", fact: "Karina was discovered via Instagram DMs and has a black belt in Taekwondo." },
-  { name: "Giselle", group: "aespa", position: "Main Rapper, Sub Vocalist", image: "/assets/idols/giselle.jpg", fact: "Giselle speaks 4 languages and was in choir for 4 years as an alto." },
-  { name: "Winter", group: "aespa", position: "Lead Vocalist, Lead Dancer", image: "/assets/idols/winter.jpg", fact: "Winter was vice president of her school and originally wanted to be an actress." },
-  { name: "Ningning", group: "aespa", position: "Main Vocalist, Maknae", image: "/assets/idols/ningning.jpg", fact: "Ningning is the maknae and has a powerful voice despite her quiet personality." },
+ { name: "Karina", group: "aespa", position: "Leader, Main Dancer, Lead Rapper, Sub Vocalist", image: "/images/Karina.jpg", fact: "Karina was discovered via Instagram DMs and has a black belt in Taekwondo." },
+{ name: "Giselle", group: "aespa", position: "Main Rapper, Sub Vocalist", image: "/images/Giselle.jpg", fact: "Giselle speaks 4 languages and was in choir for 4 years as an alto." },
+{ name: "Winter", group: "aespa", position: "Lead Vocalist, Lead Dancer", image: "/images/Winter.jpg", fact: "Winter was vice president of her school and originally wanted to be an actress." },
+{ name: "Ningning", group: "aespa", position: "Main Vocalist, Maknae", image: "/images/Ningning.jpg", fact: "Ningning is the maknae and has a powerful voice despite her quiet personality." },
   
 ];
 
