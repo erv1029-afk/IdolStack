@@ -22,7 +22,7 @@ const comebackRoutes = require("./routes/comebackRoutes");
 
 // 🚏 API endpoints
 app.use("/api/artists", artistRoutes);
-app.use("/api/groups", groupRoutes);       // ✅ Supports JSON + slug
+app.use("/api/groups", groupRoutes);      
 app.use("/api/phrases", phraseRoutes);
 app.use("/api/comebacks", comebackRoutes);
 

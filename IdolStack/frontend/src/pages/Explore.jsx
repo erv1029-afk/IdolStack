@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ArtistCard from "../components/ArtistCard"; // adjust path if needed
 
 // 🎧 YouTube links by group
 const groupLinks = {
@@ -57,23 +58,29 @@ const Explore = () => {
           <h2>Idols by Group</h2>
           {groups.map((group) => (
             <div key={group} className="group-section">
-              <h3>{group}</h3>
-              <div className="idol-grid">
+              <h3>
+                {group}{" "}
+                <a
+                  href={groupLinks[group] || `https://www.youtube.com/results?search_query=${group}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="youtube-link"
+                >
+                  🎧
+                </a>
+              </h3>
+              <div className="card-grid">
                 {idols
                   .filter((idol) => idol.group === group)
                   .map((idol) => (
-                    <div key={idol._id || `${idol.name}-${group}`} className="card">
-                      <h4>{idol.name}</h4>
-                      <p>MBTI: {idol.mbti || "Unknown"}</p>
-                      <a
-                        href={groupLinks[group] || `https://www.youtube.com/results?search_query=${group}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="youtube-link"
-                      >
-                        🎧 Explore {group} on YouTube →
-                      </a>
-                    </div>
+                    <ArtistCard
+                      key={idol._id || `${idol.name}-${group}`}
+                      name={idol.name}
+                      group={idol.group}
+                      position={idol.position}
+                      image={idol.image}
+                      fact={idol.fact}
+                    />
                   ))}
               </div>
             </div>

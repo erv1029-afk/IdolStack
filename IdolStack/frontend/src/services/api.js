@@ -1,18 +1,18 @@
 const BASE_URL = "http://localhost:5000";
 
-// 🎤 GET all idols
-export async function getIdols() {
+// 🎤 GET all artists
+export async function getArtists() {
   try {
-    const res = await fetch(`${BASE_URL}/api/idols`);
-    if (!res.ok) throw new Error("Failed to fetch idols");
+    const res = await fetch(`${BASE_URL}/api/artists`);
+    if (!res.ok) throw new Error("Failed to fetch artists");
     return await res.json();
   } catch (err) {
-    console.error("❌ getIdols error:", err);
+    console.error("❌ getArtists error:", err);
     return [];
   }
 }
 
-// 🧠 GET MBTI profiles
+// 🧠 GET MBTI profiles (if still needed)
 export async function getMBTIProfiles() {
   try {
     const res = await fetch(`${BASE_URL}/api/mbti`);

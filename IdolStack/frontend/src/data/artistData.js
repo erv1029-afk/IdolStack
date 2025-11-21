@@ -6,7 +6,7 @@ const artistData = [
   { name: "RM", group: "BTS", position: "Leader, Main Rapper", image: "/assets/idols/rm.jpg", fact: "RM has an IQ of 148 and taught himself English by watching Friends." },
   { name: "Jin", group: "BTS", position: "Sub Vocalist, Visual", image: "/assets/idols/jin.jpg", fact: "Jin owns a restaurant called Ossu Seiromushi in Seoul." },
   { name: "Suga", group: "BTS", position: "Lead Rapper", image: "/assets/idols/suga.jpg", fact: "Suga started producing music at age 13." },
-  { name: "J-Hope", group: "BTS", position: "Main Dancer, Sub Rapper", image: "/assets/idols/jhope.jpg", fact: "J-Hope was part of a street dance crew before joining BTS." },
+  { name: "J-Hope", group: "BTS", position: "Main Dancer, Sub Rapper", image: "/assets/idols/j-hope.jpg", fact: "J-Hope was part of a street dance crew before joining BTS." },
   { name: "Jimin", group: "BTS", position: "Main Dancer, Lead Vocalist", image: "/assets/idols/jimin.jpg", fact: "Jimin studied contemporary dance and ranked top of his class." },
   { name: "V", group: "BTS", position: "Lead Dancer, Sub Vocalist, Visual", image: "/assets/idols/v.jpg", fact: "V coined the phrase 'I purple you' to express love and trust." },
   { name: "Jungkook", group: "BTS", position: "Main Vocalist, Lead Dancer, Sub Rapper, Center, Maknae", image: "/assets/idols/jungkook.jpg", fact: "Jungkook directed BTS’s ‘Life Goes On’ music video himself." },
@@ -38,7 +38,7 @@ const artistData = [
   { name: "Sunghoon", group: "ENHYPEN", position: "Visual, Vocalist", image: "/assets/idols/sunghoon.jpg", fact: "Sunghoon was a competitive figure skater." },
   { name: "Sunoo", group: "ENHYPEN", position: "Vocalist", image: "/assets/idols/sunoo.jpg", fact: "Sunoo is known for his expressive selfies." },
   { name: "Jungwon", group: "ENHYPEN", position: "Leader, Lead Dancer", image: "/assets/idols/jungwon.jpg", fact: "Jungwon trained in taekwondo for 7 years." },
-  { name: "Ni-ki", group: "ENHYPEN", position: "Main Dancer, Maknae", image: "/assets/idols/niki.jpg", fact: "Ni-ki was a backup dancer for SHINee at age 11." },
+  { name: "Ni-ki", group: "ENHYPEN", position: "Main Dancer, Maknae", image: "/assets/idols/ni-ki.jpg", fact: "Ni-ki was a backup dancer for SHINee at age 11." },
 
   // 🌀 xikers
   { name: "Minjae", group: "xikers", position: "Vocalist", image: "/assets/idols/minjae.jpg", fact: "Minjae loves drawing and sketching in his free time." },
@@ -47,6 +47,11 @@ const artistData = [
   { name: "Jinsik", group: "xikers", position: "Vocalist, Lyricist", image: "/assets/idols/jinsik.jpg", fact: "Jinsik enjoys writing lyrics and journaling." },
   { name: "Hyunwoo", group: "xikers", position: "Main Vocalist", image: "/assets/idols/hyunwoo.jpg", fact: "Hyunwoo is known for his emotional vocal tone." },
   { name: "Junghoon", group: "xikers", position: "Rapper", image: "/assets/idols/junghoon.jpg", fact: "Junghoon is a fan of sci-fi and fantasy novels." },
+  { name: "Seeun", group: "xikers", position: "Vocalist, Visual, Sub-Rapper", image: "/assets/idols/seeun.jpg", fact: "Seeun is known as the group’s prankster and loves hip-hop and pop music." },
+{ name: "Yujun", group: "xikers", position: "Vocalist, Visual", image: "/assets/idols/yujun.jpg", fact: "Yujun has a huge appetite—he once ate four servings of ramen in one sitting." },
+{ name: "Yechan", group: "xikers", position: "Main Rapper, Main Dancer, Vocalist, Maknae",image: "/assets/idols/yechan.jpg", fact: "Yechan holds a black belt in taekwondo and is the youngest member of xikers." },
+{ name: "Hunter", group: "xikers", position: "Main Dancer, Vocalist", image: "/assets/idols/hunter.jpg", fact: "Hunter is Thai and won medals in golf competitions before becoming an idol." },
+
 
   // 🖤 BLACKPINK
   { name: "Jennie", group: "BLACKPINK", position: "Main Rapper, Lead Vocalist", image: "/assets/idols/jennie.jpg", fact: "Jennie speaks fluent English, Korean, and some Japanese." },
