@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 // 📸 Photocard styling
 const cardStyle = {
@@ -10,7 +9,6 @@ const cardStyle = {
   width: "160px",
   fontFamily: "Inter, sans-serif",
   transition: "transform 0.3s ease",
-  textDecoration: "none",
   color: "inherit",
 };
 
@@ -69,15 +67,11 @@ const ArtistCard = ({ name, group, position, image, fact }) => {
     }
   };
 
-  const slug = name.toLowerCase().replace(/\s+/g, "-");
-
   return (
-    <Link
-      to={`/artist/${slug}`}
+    <div
       style={{ ...cardStyle, ...(isHovered ? hoverStyle : {}) }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      aria-label={`View profile for ${name}`}
     >
       <img
         src={image}
@@ -91,8 +85,10 @@ const ArtistCard = ({ name, group, position, image, fact }) => {
         <span style={positionStyle}>{position}</span>
         <p style={factStyle}>{fact}</p>
       </div>
-    </Link>
+    </div>
   );
 };
 
 export default ArtistCard;
+ 
+ 
