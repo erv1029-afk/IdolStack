@@ -58,15 +58,20 @@ const hoverStyle = {
   transform: "scale(1.03)",
 };
 
-const ArtistCard = ({ name, group, position, image, fact }) => {
+const ArtistCard = ({ name, group, position, fact }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Slug for routing
+  const slug = name.toLowerCase().replace(/\s+/g, "-");
+
+  // Capitalized filename for image
+  const imageFile = `${name.replace(/\s+/g, "")}.jpg`; // e.g., "Jisoo.jpg"
+  const imagePath = `/images/${imageFile}`;
+
   const handleImageError = (e) => {
-    console.warn(`❌ Could not load image: ${image}`);
+    console.warn(`❌ Could not load image: ${imagePath}`);
     e.target.src = "/fallback.jpg";
   };
-
-  const slug = name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <Link
@@ -77,7 +82,7 @@ const ArtistCard = ({ name, group, position, image, fact }) => {
       aria-label={`View profile for ${name}`}
     >
       <img
-        src={image}
+        src={imagePath}
         alt={`${name} from ${group}`}
         style={imageStyle}
         onError={handleImageError}

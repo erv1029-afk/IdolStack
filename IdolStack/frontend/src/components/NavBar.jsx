@@ -38,8 +38,9 @@ const activeStyle = {
 };
 
 const NavBar = () => {
-  const paths = ["/", "/explore", "/calendar", "/phrases", "/mbti", "/groups"];
-  const labels = ["Home", "Explore", "Calendar", "Phrases", "MBTI", "Groups"];
+  // Added Lightstick route + label
+  const paths = ["/", "/explore", "/calendar", "/phrases", "/mbti", "/groups", "/lightstick"];
+  const labels = ["Home", "Explore", "Calendar", "Phrases", "MBTI", "Groups", "Lightstick"];
 
   return (
     <nav style={navStyle}>

@@ -8,8 +8,9 @@ import Explore from "./pages/Explore";
 import Calendar from "./pages/Calendar";
 import Phrases from "./pages/Phrases";
 import MBTI from "./pages/MBTI";
-import Group from "./pages/Group";         // Detail view (e.g., /group/bts)
-import GroupList from "./pages/GroupList"; // ✅ New: full list view (/groups)
+import Group from "./pages/Group";         // Dynamic detail view (e.g., /group/bts)
+import GroupList from "./pages/GroupList"; // Static list view (/groups)
+import Lightstick from "./pages/Lightstick"; // 🌟 New: "Create Your Own Lightstick"
 import NotFound from "./pages/NotFound";
 
 // 🧹 Scroll restoration component
@@ -27,13 +28,21 @@ const App = () => {
       <NavBar />
       <ScrollToTop />
       <Routes>
+        {/* Core pages */}
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/mbti" element={<MBTI />} />
-        <Route path="/groups" element={<GroupList />} />     {/* ✅ Static list route */}
-        <Route path="/group/:name" element={<Group />} />    {/* ✅ Dynamic detail route */}
+
+        {/* Groups */}
+        <Route path="/groups" element={<GroupList />} />
+        <Route path="/group/:name" element={<Group />} />
+
+        {/* Coming soon feature */}
+        <Route path="/lightstick" element={<Lightstick />} />
+
+        {/* Fallback */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
