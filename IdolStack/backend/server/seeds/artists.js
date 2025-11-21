@@ -40,16 +40,16 @@ const artistData = [
 { name: "Ni-ki", group: "ENHYPEN", position: "Main Dancer, Maknae", image: "/images/Ni-Ki.jpg", fact: "Ni-ki was a backup dancer for SHINee at age 11." },
 
   // 🌀 xikers
-  { name: "Minjae", group: "xikers", position: "Leader, Vocalist", image: "/assets/idols/minjae.jpg", fact: "Minjae loves drawing and sketching in his free time." },
-  { name: "Junmin", group: "xikers", position: "Dancer, Vocalist", image: "/assets/idols/junmin.jpg", fact: "Junmin is known for his calm and gentle personality." },
-  { name: "Sumin", group: "xikers", position: "Rapper, Main Dancer", image: "/assets/idols/sumin.jpg", fact: "Sumin is a rapper and main dancer of xikers." },
-  { name: "Jinsik", group: "xikers", position: "Vocalist, Lyricist", image: "/assets/idols/jinsik.jpg", fact: "Jinsik enjoys writing lyrics and journaling." },
-  { name: "Hyunwoo", group: "xikers", position: "Main Vocalist", image: "/assets/idols/hyunwoo.jpg", fact: "Hyunwoo is known for his emotional vocal tone." },
-  { name: "Junghoon", group: "xikers", position: "Rapper", image: "/assets/idols/junghoon.jpg", fact: "Junghoon is a fan of sci-fi and fantasy novels." },
-  { name: "Hunter", group: "xikers", position: "Main Rapper", image: "/images/Hunter.jpg", fact: "Hunter is known for his deep voice and charismatic stage presence." },
+ { name: "Minjae", group: "xikers", position: "Leader, Vocalist", image: "/images/Minjae.jpg", fact: "Minjae loves drawing and sketching in his free time." },
+{ name: "Junmin", group: "xikers", position: "Dancer, Vocalist", image: "/images/Junmin.jpg", fact: "Junmin is known for his calm and gentle personality." },
+{ name: "Sumin", group: "xikers", position: "Rapper, Main Dancer", image: "/images/Sumin.jpg", fact: "Sumin is a rapper and main dancer of xikers." },
+{ name: "Jinsik", group: "xikers", position: "Vocalist, Lyricist", image: "/images/Jinsik.jpg", fact: "Jinsik enjoys writing lyrics and journaling." },
+{ name: "Hyunwoo", group: "xikers", position: "Main Vocalist", image: "/images/Hyunwoo.jpg", fact: "Hyunwoo is known for his emotional vocal tone." },
+{ name: "Junghoon", group: "xikers", position: "Rapper", image: "/images/Junghoon.jpg", fact: "Junghoon is a fan of sci-fi and fantasy novels." },
 { name: "Seeun", group: "xikers", position: "Vocalist, Visual, Sub-Rapper", image: "/images/Seeun.jpg", fact: "Seeun is known as the group’s prankster and loves hip-hop and pop music." },
-{ name: "Yujun", group: "xikers", position: "Sub Vocalist", image: "/images/Yujun.jpg", fact: "Yujun enjoys photography and capturing behind-the-scenes moments." },
-{ name: "Yechan", group: "xikers", position: "Maknae, Sub Rapper", image: "/images/Yechan.jpg", fact: "Yechan is the youngest member and loves gaming and anime." },
+{ name: "Yujun", group: "xikers", position: "Vocalist, Visual", image: "/images/Yujun.jpg", fact: "Yujun has a huge appetite—he once ate four servings of ramen in one sitting." },
+{ name: "Yechan", group: "xikers", position: "Main Rapper, Main Dancer, Vocalist, Maknae", image: "/images/Yechan.jpg", fact: "Yechan holds a black belt in taekwondo and is the youngest member of xikers." },
+{ name: "Hunter", group: "xikers", position: "Main Dancer, Vocalist", image: "/images/Hunter.jpg", fact: "Hunter is Thai and won medals in golf competitions before becoming an idol." },
 
   // 🖤 BLACKPINK
  { name: "Jennie", group: "BLACKPINK", position: "Main Rapper, Lead Vocalist", image: "/images/Jennie.jpg", fact: "Jennie speaks fluent English, Korean, and some Japanese." },
