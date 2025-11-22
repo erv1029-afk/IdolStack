@@ -5,7 +5,7 @@ const artistData = [
 { name: "Suga", group: "BTS", position: "Lead Rapper", image: "/images/Suga.jpg", fact: "Suga started producing music at age 13." },
 { name: "J-Hope", group: "BTS", position: "Main Dancer, Sub Rapper", image: "/images/J-Hope.jpg", fact: "J-Hope was part of a street dance crew before joining BTS." },
 { name: "Jimin", group: "BTS", position: "Main Dancer, Lead Vocalist", image: "/images/Jimin.jpg", fact: "Jimin studied contemporary dance and ranked top of his class." },
-{ name: "V", group: "BTS", position: "Lead Dancer, Sub Vocalist, Visual", image: "/images/V.jpg", fact: "V coined the phrase 'I purple you' to express love and trust." },
+{ name: "V", group: "BTS", position: "Lead Dancer, Sub Vocalist, Visual", image: "/images/Taehyung.jpg", fact: "V coined the phrase 'I purple you' to express love and trust." },
 { name: "Jungkook", group: "BTS", position: "Main Vocalist, Lead Dancer, Sub Rapper, Center, Maknae", image: "/images/Jungkook.jpg", fact: "Jungkook directed BTS’s ‘Life Goes On’ music video himself." },
 
 // 🌊 ATEEZ

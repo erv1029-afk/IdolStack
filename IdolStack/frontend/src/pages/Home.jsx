@@ -1,23 +1,17 @@
 import { useState, useEffect } from "react";
 import ArtistCard from "../components/ArtistCard";
 import FloatingIcons from "../components/FloatingIcons";
-import artistData from "../data/artistData"; // adjust path
-import ReactPlayer from "react-player"; // 🎶 new import
+import artistData from "../data/artistData";
+import groupData from "../data/groupData"; // new file with groups + colors
 
 const Home = () => {
   const [idolOfTheDay, setIdolOfTheDay] = useState(null);
-  const [showPlayer, setShowPlayer] = useState(false);
 
   // Pick Idol of the Day once per load
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * artistData.length);
     setIdolOfTheDay(artistData[randomIndex]);
   }, []);
-
-  // Toggle player visibility
-  const toggleMusic = () => {
-    setShowPlayer(!showPlayer);
-  };
 
   return (
     <main
@@ -37,39 +31,58 @@ const Home = () => {
       <section className="hero">
         <h1>Welcome to IdolStack ✨</h1>
         <p>Discover idols, explore groups, and celebrate K‑pop culture.</p>
-        <button
-          onClick={toggleMusic}
-          style={{
-            marginTop: "1rem",
-            padding: "0.5rem 1rem",
-            borderRadius: "8px",
-            backgroundColor: showPlayer ? "#FF6B00" : "#00C9A7",
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          {showPlayer ? "⏸ Hide Mix" : "▶ Show Mix"}
-        </button>
-
-       {showPlayer && (
-  <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
-    <ReactPlayer
-      url="https://www.youtube.com/watch?v=U0G5OA6ZH5w&list=RDEMUFDstSUMNbjW0BzpqSQH4Q&start_radio=1" 
-              controls
-              width="560px"
-              height="315px"
-            />
-          </div>
-        )}
       </section>
 
-      <section className="idol-of-day" style={{ marginTop: "2rem" }}>
-        <h2>🌟 Idol of the Day</h2>
+      <section
+        className="idol-of-day"
+        style={{
+          marginTop: "2rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <h2 style={{ textAlign: "center" }}>🌟 Idol of the Day</h2>
         {idolOfTheDay && <ArtistCard {...idolOfTheDay} />}
+      </section>
+
+      <section
+        className="group-pcs"
+        style={{
+          marginTop: "3rem",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "1rem",
+          justifyContent: "center",
+        }}
+      >
+        {groupData.map((group) => (
+          <a
+            key={group.name}
+            href={group.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              backgroundColor: group.color,
+              borderRadius: "12px",
+              padding: "1rem",
+              width: "180px",
+              textAlign: "center",
+              textDecoration: "none",
+              color: "#222",
+              fontWeight: "bold",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              transition: "transform 0.2s ease",
+            }}
+          >
+            {group.name}
+          </a>
+        ))}
       </section>
     </main>
   );
 };
 
-export default Home;
+export default Home
+
+
