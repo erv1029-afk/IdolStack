@@ -1,5 +1,4 @@
 import CalendarView from "../components/CalendarView";
-import IdolList from "../components/IdolList";
 
 const Calendar = () => {
   return (
@@ -10,11 +9,6 @@ const Calendar = () => {
       </header>
 
       <CalendarView />
-
-      <aside>
-        <h2>Featured Idols</h2>
-        <IdolList />
-      </aside>
 
       <footer>
         <small>Powered by your bias picks and global idol data 💫</small>
