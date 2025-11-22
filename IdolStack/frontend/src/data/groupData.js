@@ -2,12 +2,12 @@ const groupData = [
   {
     name: "BTS",
     color: "#A2D2FF", // soft blue
-    youtube: "https://www.youtube.com/channel/UC3IZKseVpdzPSBaWxBxundA", // BANGTANTV
+    youtube: "https://www.youtube.com/@BTS", // BANGTANTV
   },
   {
     name: "ATEEZ",
     color: "#FFAFCC", // pink coral
-    youtube: "https://www.youtube.com/channel/UCcFqCkZ9l0wY3zIhY6uY2Zw", // ATEEZ Official
+    youtube: "https://www.youtube.com/@ATEEZofficial", // ATEEZ Official
   },
   {
     name: "Stray Kids",
@@ -17,12 +17,12 @@ const groupData = [
   {
     name: "ENHYPEN",
     color: "#FFC6FF", // pastel pink
-    youtube: "https://www.youtube.com/c/ENHYPENOFFICIAL", // ENHYPEN Official
+    youtube: "https://www.youtube.com/@ENHYPENOFFICIAL", // ENHYPEN Official
   },
   {
     name: "XIKERS",
     color: "#FFD6A5", // warm peach
-    youtube: "https://www.youtube.com/@xikers_official", // XIKERS Official (handle works, but direct link is fine too)
+    youtube: "https://www.youtube.com/@xikers_official", // XIKERS Official
   },
   {
     name: "BLACKPINK",
@@ -37,7 +37,7 @@ const groupData = [
   {
     name: "IVE",
     color: "#FEC89A", // soft orange
-    youtube: "https://www.youtube.com/c/IVEstarship", // IVE Official
+    youtube: "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q", // IVE Official
   },
   {
     name: "aespa",
