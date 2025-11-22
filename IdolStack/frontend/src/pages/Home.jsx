@@ -52,10 +52,10 @@ const Home = () => {
           {showPlayer ? "⏸ Hide Mix" : "▶ Show Mix"}
         </button>
 
-        {showPlayer && (
-          <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
-            <ReactPlayer
-              url="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" // replace with your mix link
+       {showPlayer && (
+  <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
+    <ReactPlayer
+      url="https://www.youtube.com/watch?v=U0G5OA6ZH5w&list=RDEMUFDstSUMNbjW0BzpqSQH4Q&start_radio=1" 
               controls
               width="560px"
               height="315px"
