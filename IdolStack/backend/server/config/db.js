@@ -2,11 +2,8 @@
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-// 🌐 Create MongoDB client instance
-const client = new MongoClient(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// 🌐 Create MongoDB client instance (no deprecated options)
+const client = new MongoClient(process.env.MONGO_URI);
 
 let db;
 
