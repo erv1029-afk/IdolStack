@@ -154,16 +154,27 @@ const groups = [
 // 🌱 Seed function
 async function seedGroups() {
   const uri = process.env.MONGO_URI;
-  const client = new MongoClient(uri);
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   try {
     await client.connect();
-    const db = client.db();
+    const db = client.db("idolstack"); // ✅ explicitly name your DB
 
+    // 🧹 Clean slate
     await db.collection("groups").deleteMany({});
-    await db.collection("groups").insertMany(groups);
 
+    // 🧬 Insert data
+    await db.collection("groups").insertMany(groups);
     console.log("✅ Groups seeded successfully");
+
+    // 📌 Create indexes
+    await db.collection("groups").createIndex({ name: 1 }, { unique: true });
+    await db.collection("groups").createIndex({ agency: 1 });
+    await db.collection("groups").createIndex({ debutYear: 1 });
+    console.log("📌 Indexes created on name, agency, and debutYear");
   } catch (err) {
     console.error("❌ Seeding error:", err);
   } finally {

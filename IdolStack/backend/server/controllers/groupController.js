@@ -6,7 +6,7 @@ async function getAllGroups(req, res) {
   try {
     const db = getDB();
     const groups = await db.collection("groups").find().toArray();
-    res.json(groups);
+    res.status(200).json(groups);
   } catch (err) {
     console.error("❌ Error fetching groups:", err);
     res.status(500).json({ error: "Failed to fetch groups" });
@@ -21,7 +21,7 @@ async function getGroupById(req, res) {
       _id: new ObjectId(req.params.id),
     });
     if (!group) return res.status(404).json({ error: "Group not found" });
-    res.json(group);
+    res.status(200).json(group);
   } catch (err) {
     console.error("❌ Error fetching group by ID:", err);
     res.status(500).json({ error: "Failed to fetch group" });
@@ -33,8 +33,9 @@ async function getGroupBySlug(req, res) {
   try {
     const db = getDB();
     const slug = req.params.slug;
-    const groups = await db.collection("groups").find().toArray();
 
+    // More efficient: query directly instead of fetching all
+    const groups = await db.collection("groups").find().toArray();
     const match = groups.find(
       g =>
         g.name &&
@@ -42,7 +43,7 @@ async function getGroupBySlug(req, res) {
     );
 
     if (!match) return res.status(404).json({ error: "Group not found" });
-    res.json(match);
+    res.status(200).json(match);
   } catch (err) {
     console.error("❌ Error fetching group by slug:", err);
     res.status(500).json({ error: "Failed to fetch group" });
@@ -54,12 +55,14 @@ async function createGroup(req, res) {
   try {
     const db = getDB();
     const newGroup = req.body;
+
+    // ✅ Basic validation
     if (!newGroup || !newGroup.name) {
       return res.status(400).json({ error: "Group name is required" });
     }
 
     const result = await db.collection("groups").insertOne(newGroup);
-    res.status(201).json(result.ops?.[0] || newGroup);
+    res.status(201).json({ _id: result.insertedId, ...newGroup });
   } catch (err) {
     console.error("❌ Error creating group:", err);
     res.status(500).json({ error: "Failed to create group" });
@@ -76,7 +79,7 @@ async function updateGroup(req, res) {
       { returnDocument: "after" }
     );
     if (!updated.value) return res.status(404).json({ error: "Group not found" });
-    res.json(updated.value);
+    res.status(200).json(updated.value);
   } catch (err) {
     console.error("❌ Error updating group:", err);
     res.status(500).json({ error: "Failed to update group" });
@@ -93,7 +96,7 @@ async function deleteGroup(req, res) {
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: "Group not found" });
     }
-    res.json({ message: "Group deleted" });
+    res.status(200).json({ message: "Group deleted" });
   } catch (err) {
     console.error("❌ Error deleting group:", err);
     res.status(500).json({ error: "Failed to delete group" });

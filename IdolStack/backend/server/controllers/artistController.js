@@ -6,7 +6,7 @@ async function getAllArtists(req, res) {
   try {
     const db = getDB();
     const artists = await db.collection('artists').find().toArray();
-    res.json(artists);
+    res.status(200).json(artists);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch artists' });
   }
@@ -18,7 +18,7 @@ async function getArtistById(req, res) {
     const db = getDB();
     const artist = await db.collection('artists').findOne({ _id: new ObjectId(req.params.id) });
     if (!artist) return res.status(404).json({ error: 'Artist not found' });
-    res.json(artist);
+    res.status(200).json(artist);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch artist' });
   }
@@ -30,7 +30,7 @@ async function getArtistsByGroup(req, res) {
     const db = getDB();
     const groupName = req.params.groupName;
     const artists = await db.collection('artists').find({ group: groupName }).toArray();
-    res.json(artists);
+    res.status(200).json(artists);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch artists by group' });
   }
@@ -41,8 +41,14 @@ async function createArtist(req, res) {
   try {
     const db = getDB();
     const newArtist = req.body;
+
+    // ✅ Basic validation
+    if (!newArtist.name || !newArtist.group) {
+      return res.status(400).json({ error: 'Name and group are required' });
+    }
+
     const result = await db.collection('artists').insertOne(newArtist);
-    res.status(201).json(result.ops?.[0] || newArtist);
+    res.status(201).json({ _id: result.insertedId, ...newArtist });
   } catch (err) {
     res.status(500).json({ error: 'Failed to create artist' });
   }
@@ -58,7 +64,7 @@ async function updateArtist(req, res) {
       { returnDocument: 'after' }
     );
     if (!updated.value) return res.status(404).json({ error: 'Artist not found' });
-    res.json(updated.value);
+    res.status(200).json(updated.value);
   } catch (err) {
     res.status(500).json({ error: 'Failed to update artist' });
   }
@@ -70,7 +76,7 @@ async function deleteArtist(req, res) {
     const db = getDB();
     const result = await db.collection('artists').deleteOne({ _id: new ObjectId(req.params.id) });
     if (result.deletedCount === 0) return res.status(404).json({ error: 'Artist not found' });
-    res.json({ message: 'Artist deleted' });
+    res.status(200).json({ message: 'Artist deleted' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete artist' });
   }
@@ -82,5 +88,5 @@ module.exports = {
   getArtistsByGroup,
   createArtist,
   updateArtist,
-  deleteArtist
+  deleteArtist,
 };

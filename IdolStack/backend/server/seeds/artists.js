@@ -82,12 +82,19 @@ const artistData = [
   
 ];
 
-connectDB().then(() => {
-  const db = getDB();
-  db.collection('artists').deleteMany({}).then(() => {
-    db.collection('artists').insertMany(artistData).then(() => {
-      console.log('🎤 Artists seeded successfully');
-      process.exit();
-    });
+connectDB()
+  .then(() => {
+    const db = getDB();
+    return db.collection('artists').deleteMany({})
+      .then(() => db.collection('artists').insertMany(artistData))
+      .then(() => {
+        console.log('🎤 Artists seeded successfully');
+        // 📌 Add indexes here if needed
+      });
+  })
+  .catch(err => {
+    console.error('❌ Seeding error:', err);
+  })
+  .finally(() => {
+    process.exit();
   });
-});

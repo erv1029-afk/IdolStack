@@ -6,7 +6,7 @@ async function getAllComebacks(req, res) {
   try {
     const db = getDB();
     const comebacks = await db.collection('comebacks').find().toArray();
-    res.json(comebacks);
+    res.status(200).json(comebacks);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch comebacks' });
   }
@@ -18,7 +18,7 @@ async function getComebackById(req, res) {
     const db = getDB();
     const comeback = await db.collection('comebacks').findOne({ _id: new ObjectId(req.params.id) });
     if (!comeback) return res.status(404).json({ error: 'Comeback not found' });
-    res.json(comeback);
+    res.status(200).json(comeback);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch comeback' });
   }
@@ -30,7 +30,7 @@ async function getComebacksByGroup(req, res) {
     const db = getDB();
     const groupName = req.params.groupName;
     const comebacks = await db.collection('comebacks').find({ group: groupName }).toArray();
-    res.json(comebacks);
+    res.status(200).json(comebacks);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch comebacks by group' });
   }
@@ -41,8 +41,14 @@ async function createComeback(req, res) {
   try {
     const db = getDB();
     const newComeback = req.body;
+
+    // ✅ Basic validation
+    if (!newComeback.group || !newComeback.title || !newComeback.releaseDate) {
+      return res.status(400).json({ error: 'Group, title, and releaseDate are required' });
+    }
+
     const result = await db.collection('comebacks').insertOne(newComeback);
-    res.status(201).json(result.ops?.[0] || newComeback);
+    res.status(201).json({ _id: result.insertedId, ...newComeback });
   } catch (err) {
     res.status(500).json({ error: 'Failed to create comeback' });
   }
@@ -58,7 +64,7 @@ async function updateComeback(req, res) {
       { returnDocument: 'after' }
     );
     if (!updated.value) return res.status(404).json({ error: 'Comeback not found' });
-    res.json(updated.value);
+    res.status(200).json(updated.value);
   } catch (err) {
     res.status(500).json({ error: 'Failed to update comeback' });
   }
@@ -70,7 +76,7 @@ async function deleteComeback(req, res) {
     const db = getDB();
     const result = await db.collection('comebacks').deleteOne({ _id: new ObjectId(req.params.id) });
     if (result.deletedCount === 0) return res.status(404).json({ error: 'Comeback not found' });
-    res.json({ message: 'Comeback deleted' });
+    res.status(200).json({ message: 'Comeback deleted' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete comeback' });
   }
@@ -82,5 +88,5 @@ module.exports = {
   getComebacksByGroup,
   createComeback,
   updateComeback,
-  deleteComeback
+  deleteComeback,
 };
