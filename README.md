@@ -68,8 +68,8 @@ http://locahost:5173
 
 🔗 Deployment Links
 Once deployed, links will be added here:
-- Frontend: [Coming Soon]
-- Backend API: [Coming Soon]
+- Frontend: https://idolstack.netlify.app/
+- Backend API: https://idolstack-backend.onrender.com/
 
 
 👩‍💻 Author
